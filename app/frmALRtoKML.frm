@@ -4,8 +4,8 @@ Begin VB.Form frmALRtoKML
    BorderStyle     =   1  'Fixed Single
    Caption         =   "ALR to KML convertor"
    ClientHeight    =   5280
-   ClientLeft      =   45
-   ClientTop       =   435
+   ClientLeft      =   12165
+   ClientTop       =   4455
    ClientWidth     =   3750
    Icon            =   "frmALRtoKML.frx":0000
    LinkTopic       =   "Form1"
@@ -14,7 +14,6 @@ Begin VB.Form frmALRtoKML
    Picture         =   "frmALRtoKML.frx":030A
    ScaleHeight     =   5280
    ScaleWidth      =   3750
-   StartUpPosition =   3  'Windows Default
    Begin VB.Label lblMail 
       BackStyle       =   0  'Transparent
       Height          =   255
@@ -88,72 +87,107 @@ Private Sub Form_Unload(Cancel As Integer)
 End Sub
 
 Private Sub lblMail_Click()
-Dim filenamemail As String
 ShellExecute Me.hwnd, "", "mailto:vandael.marc@gmail.com", "", "", 1
 End Sub
 
 
 Private Sub lblCONVERTBUTTON_Click()
 On Error GoTo ProcError
-Dim file_name As String
-Dim fnum As Integer
-Dim whole_file As String
+Dim sALRpath As String
+Dim iFnum As Integer
+Dim sALRwholefile As String
 Dim lines As Variant
 Dim one_line As Variant
 Dim num_rows As Long
 Dim num_cols As Long
-Dim the_array() As String
-Dim R As Long
-Dim C As Long
+Dim ALRtable() As String
+Dim Row As Long
+Dim Column As Long
 
-    file_name = lblDummy.Caption
+    sALRpath = lblDummy.Caption
     
-    fnum = FreeFile
-    Open file_name For Input As fnum
-    whole_file = Input$(LOF(fnum), #fnum)
-    Close fnum
+    iFnum = FreeFile
+    Open sALRpath For Input As iFnum
+    sALRwholefile = Input$(LOF(iFnum), #iFnum)
+    Close iFnum
 
-    lines = Split(whole_file, vbCrLf)
+    lines = Split(sALRwholefile, vbCrLf)
 
     num_rows = UBound(lines)
     num_rows = num_rows - 1
     one_line = Split(lines(11), ",")
     num_cols = 2
-    ReDim the_array(num_rows, num_cols)
+    ReDim ALRtable(num_rows, num_cols)
 
-    For R = 11 To num_rows
-        If Len(lines(R)) > 0 Then
-            one_line = Split(lines(R), ",")
-            For C = 1 To num_cols
-                the_array(R, C) = one_line(C)
-            Next C
+    For Row = 11 To num_rows
+        If Len(lines(Row)) > 0 Then
+            one_line = Split(lines(Row), ",")
+            For Column = 1 To num_cols
+                ALRtable(Row, Column) = one_line(Column)
+            Next Column
         End If
-    Next R
+    Next Row
     
 
     Dim sFileText As String
     Dim iFileNo As Integer
     iFileNo = FreeFile
     
-    Dim newfilename As String
-    newfilename = lblDummy.Caption
-    newfilename = Left(newfilename, Len(newfilename) - 3)
-    newfilename = newfilename & "kml"
+    Dim sKMLpath As String
+    sKMLpath = lblDummy.Caption
+    sKMLpath = Left(sKMLpath, Len(sKMLpath) - 3)
+    sKMLpath = sKMLpath & "kml"
     
-    Open newfilename For Output As #iFileNo
-        Print #iFileNo, "<kml>" & vbNewLine & "<Document>" & vbNewLine & "<Placemark>" & vbNewLine & "<LineString>" & vbNewLine & "<coordinates>"
-  
-        For R = 11 To num_rows
-            Print #iFileNo, the_array(R, 2) & "," & the_array(R, 1) & ",0" & vbNewLine;
-        Next R
-        
-        Print #iFileNo, "</coordinates>" & vbNewLine & "</LineString>" & vbNewLine & "</Placemark>" & vbNewLine & "</Document>" & vbNewLine & "</kml>"
-
-    Close #iFileNo
+    
+    'Open sKMLpath For Output As #iFileNo
+    '    Print #iFileNo, "<kml><Document><Placemark><LineString><coordinates>"
+  '
+   '     For Row = 11 To num_rows
+    '        Print #iFileNo, ALRtable(Row, 2) & "," & ALRtable(Row, 1) & ",0" & vbNewLine;
+     '   Next Row
+      '
+       ' Print #iFileNo, "</coordinates></LineString></Placemark></Document></kml>"
+'
+ '   Close #iFileNo
   
   
     lblNotify.ForeColor = &HFF00&
     lblNotify.Caption = "File converted OK"
+  
+  
+    'Dim KML As String
+    'KML = "<?xml version=""1.0"" encoding=""UTF-8""?>" & ControlChars.Newline
+    'KML &= "<kml xmlns=""http://earth.google.com/kml/2.0"">"
+
+    
+
+    'Bestandsnaam uit volledig pad halen
+        Dim sKMLpathSplit() As String
+        Dim sKMLfilename As String
+        Dim iKMLfilenameArrayLength As Integer
+
+        sKMLpathSplit = Split(sKMLpath, "\")
+        iKMLfilenameArrayLength = UBound(sKMLpathSplit)
+        sKMLfilename = IIf(iKMLfilenameArrayLength = 0, "", sKMLpathSplit(iKMLfilenameArrayLength))
+    '-----------------------------------
+  
+
+      Open sKMLpath For Output As #iFileNo2
+        Print #iFileNo, "<kml><Document><Placemark><LineString><coordinates>"
+  
+        For Row = 11 To num_rows
+            Print #iFileNo, ALRtable(Row, 2) & "," & ALRtable(Row, 1) & ",0" & vbNewLine;
+        Next Row
+        
+        Print #iFileNo, "</coordinates></LineString></Placemark></Document></kml>"
+
+    Close #iFileNo
+  
+  
+  
+  
+  
+  
   
     Exit Sub
   
