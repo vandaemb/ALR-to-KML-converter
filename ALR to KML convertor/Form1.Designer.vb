@@ -44,8 +44,13 @@ Partial Class frmALRtoKML
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(235, 352)
         Me.Controls.Add(Me.RichTextBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmALRtoKML"
+        Me.ShowIcon = False
         Me.Text = "ARL to KML converter"
+        Me.TopMost = True
         Me.ResumeLayout(False)
 
     End Sub
