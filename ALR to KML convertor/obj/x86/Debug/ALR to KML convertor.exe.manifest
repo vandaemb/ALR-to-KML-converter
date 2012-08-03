@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ALR to KML convertor.exe" size="60416">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ALR to KML convertor.exe" size="60928">
       <assemblyIdentity name="ALR to KML convertor" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>wga81C+Yj88vwagNQYZDgVqfFCQ=</dsig:DigestValue>
+        <dsig:DigestValue>K6caqHVUhb5RY0KDQ9NKofvdN/4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

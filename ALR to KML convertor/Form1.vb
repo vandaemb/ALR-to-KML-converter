@@ -1,12 +1,10 @@
 ﻿Imports System.IO
 
-
-
-
-
 Public Class frmALRtoKML
     Dim strooien As Boolean
     Dim endtagset As Boolean
+    Dim wstrooien As Boolean
+    Dim wendtagset As Boolean
 
 
     Private Sub frmALRtoKML_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -20,6 +18,8 @@ Public Class frmALRtoKML
 
         strooien = True
         endtagset = False
+        wstrooien = True
+        wendtagset = False
     End Sub
 
     Private Sub Form_DragEnter(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DragEventArgs)
@@ -42,9 +42,7 @@ Public Class frmALRtoKML
             Dim num_cols As Long
             Dim x As Integer
             Dim y As Integer
-            Dim yn As Integer
             Dim strarray(1, 1) As String
-            'Dim strooien As Boolean
 
 
 
@@ -169,9 +167,57 @@ Public Class frmALRtoKML
 
 
                 writer.WriteLine(vbTab & "<Document>")
-                writer.WriteLine(vbTab & "<name>" & newfilename & " - Volledig traject</name>")
+                writer.WriteLine(vbTab & "<name>" & newfilename & " - Strooien</name>")
                 writer.WriteLine(vbTab & "<Style><ListStyle><listItemType>checkHideChildren</listItemType><bgColor>00ffffff</bgColor><maxSnippetLines>2</maxSnippetLines></ListStyle></Style>")
-                writer.WriteLine(vbTab & "<Style id=""VolledigTraject""><LineStyle><width>2</width><color>FFF0FF14</color></LineStyle></Style>")
+                writer.WriteLine(vbTab & "<Style id=""Strooien""><LineStyle><width>6</width><color>FF14F000</color></LineStyle></Style>")
+
+                writer.WriteLine(vbTab & vbTab & "<Placemark>")
+                writer.WriteLine(vbTab & vbTab & vbTab & "<styleUrl>#Strooien</styleUrl>")
+                writer.WriteLine(vbTab & vbTab & vbTab & "<LineString>")
+                writer.WriteLine(vbTab & vbTab & vbTab & "<gx:drawOrder>5</gx:drawOrder>")
+                writer.WriteLine(vbTab & vbTab & vbTab & vbTab & "<coordinates>")
+
+                For x = startx To num_rows
+
+                    If strarray(x, 5) = "1" Then
+                        wstrooien = True
+                    End If
+
+                    If wstrooien = True Then
+                        writer.WriteLine(vbTab & vbTab & vbTab & vbTab & vbTab & strarray(x, 2) & "," & strarray(x, 1) & ",0")
+                    End If
+
+                    If strarray(x, 5) = "0" Then
+                        wstrooien = False
+
+                        writer.WriteLine(vbTab & vbTab & vbTab & vbTab & "</coordinates>")
+                        writer.WriteLine(vbTab & vbTab & vbTab & "</LineString>")
+                        writer.WriteLine(vbTab & vbTab & "</Placemark>")
+                        writer.WriteLine(vbTab & vbTab & "<Placemark>")
+                        writer.WriteLine(vbTab & vbTab & vbTab & "<styleUrl>#Strooien</styleUrl>")
+                        writer.WriteLine(vbTab & vbTab & vbTab & "<LineString>")
+                        writer.WriteLine(vbTab & vbTab & vbTab & "<gx:drawOrder>5</gx:drawOrder>")
+                        writer.WriteLine(vbTab & vbTab & vbTab & vbTab & "<coordinates>")
+
+
+
+                    End If
+
+                Next
+
+
+
+                writer.WriteLine(vbTab & vbTab & vbTab & vbTab & "</coordinates>")
+                writer.WriteLine(vbTab & vbTab & vbTab & "</LineString>")
+                writer.WriteLine(vbTab & vbTab & "</Placemark>")
+                writer.WriteLine(vbTab & "</Document>")
+
+
+                writer.WriteLine(vbTab & "<Document>")
+                writer.WriteLine(vbTab & "<name>" & newfilename & " - Traject</name>")
+                writer.WriteLine(vbTab & "<visibility>0</visibility>")
+                writer.WriteLine(vbTab & "<Style><ListStyle><listItemType>checkHideChildren</listItemType><bgColor>00ffffff</bgColor><maxSnippetLines>2</maxSnippetLines></ListStyle></Style>")
+                writer.WriteLine(vbTab & "<Style id=""VolledigTraject""><LineStyle><width>1</width><color>FFDC78F0</color></LineStyle></Style>")
 
                 writer.WriteLine(vbTab & vbTab & "<Placemark>")
                 writer.WriteLine(vbTab & vbTab & vbTab & "<styleUrl>#VolledigTraject</styleUrl>")

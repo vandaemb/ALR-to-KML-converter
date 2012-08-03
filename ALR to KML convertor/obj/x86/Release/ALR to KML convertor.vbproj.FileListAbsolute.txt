@@ -13,3 +13,18 @@ D:\Projects\ALR to KML convertor\ALR to KML convertor\obj\x86\Release\ALR to KML
 D:\Projects\ALR to KML convertor\ALR to KML convertor\obj\x86\Release\ALR to KML convertor.exe
 D:\Projects\ALR to KML convertor\ALR to KML convertor\obj\x86\Release\ALR to KML convertor.xml
 D:\Projects\ALR to KML convertor\ALR to KML convertor\obj\x86\Release\ALR to KML convertor.pdb
+D:\ALR-to-KML-converter\ALR to KML convertor\bin\Release\ALR to KML convertor.exe.manifest
+D:\ALR-to-KML-converter\ALR to KML convertor\bin\Release\ALR to KML convertor.application
+D:\ALR-to-KML-converter\ALR to KML convertor\bin\Release\ALR to KML convertor.exe
+D:\ALR-to-KML-converter\ALR to KML convertor\bin\Release\ALR to KML convertor.pdb
+D:\ALR-to-KML-converter\ALR to KML convertor\bin\Release\ALR to KML convertor.xml
+D:\ALR-to-KML-converter\ALR to KML convertor\obj\x86\Release\ResolveAssemblyReference.cache
+D:\ALR-to-KML-converter\ALR to KML convertor\obj\x86\Release\WindowsApplication1.frmALRtoKML.resources
+D:\ALR-to-KML-converter\ALR to KML convertor\obj\x86\Release\WindowsApplication1.Resources.resources
+D:\ALR-to-KML-converter\ALR to KML convertor\obj\x86\Release\GenerateResource.read.1.tlog
+D:\ALR-to-KML-converter\ALR to KML convertor\obj\x86\Release\GenerateResource.write.1.tlog
+D:\ALR-to-KML-converter\ALR to KML convertor\obj\x86\Release\ALR to KML convertor.exe.manifest
+D:\ALR-to-KML-converter\ALR to KML convertor\obj\x86\Release\ALR to KML convertor.application
+D:\ALR-to-KML-converter\ALR to KML convertor\obj\x86\Release\ALR to KML convertor.exe
+D:\ALR-to-KML-converter\ALR to KML convertor\obj\x86\Release\ALR to KML convertor.xml
+D:\ALR-to-KML-converter\ALR to KML convertor\obj\x86\Release\ALR to KML convertor.pdb
