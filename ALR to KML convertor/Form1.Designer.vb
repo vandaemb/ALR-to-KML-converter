@@ -33,7 +33,7 @@ Partial Class frmALRtoKML
         Me.RichTextBox1.Location = New System.Drawing.Point(-2, 211)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.RichTextBox1.Size = New System.Drawing.Size(238, 118)
+        Me.RichTextBox1.Size = New System.Drawing.Size(252, 118)
         Me.RichTextBox1.TabIndex = 1
         Me.RichTextBox1.Text = ""
         '
@@ -42,14 +42,15 @@ Partial Class frmALRtoKML
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
-        Me.ClientSize = New System.Drawing.Size(235, 352)
+        Me.ClientSize = New System.Drawing.Size(249, 352)
         Me.Controls.Add(Me.RichTextBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmALRtoKML"
-        Me.ShowIcon = False
-        Me.Text = "ARL to KML converter"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
+        Me.Text = "ALR naar KML convertor"
         Me.TopMost = True
         Me.ResumeLayout(False)
 
